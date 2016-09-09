@@ -1,4 +1,4 @@
-var application = application.module('application', []);
+var application = angular.module('application', []);
 
 function mainController ($scope, $http) {
   $scope.formData = {};
@@ -14,7 +14,7 @@ function mainController ($scope, $http) {
 
   // when submitting the add form, send the text to the node API
   $scope.createTodo = function () {
-    $http.post('/api/todos')
+    $http.post('/api/todos', $scope.formData)
     .success(function (data) {
       // clear the form so user is ready to enter another
       $scope.formData = {};
@@ -28,7 +28,7 @@ function mainController ($scope, $http) {
 
   // delete a todo after checking it
   $scope.deleteTodo = function (id) {
-    $http.delete('/api/todos' + id)
+    $http.delete('/api/todos/' + id)
     .success(function (data) {
       $scope.todos = data;
       console.log(data);
