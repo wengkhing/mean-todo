@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 // define model ==============================================
-var Todo = mongoose.model('Todo', {
-    text : String,
-    done: Boolean
+module.exports = mongoose.model('Todo', {
+  text : String,
+  done: Boolean
 });
